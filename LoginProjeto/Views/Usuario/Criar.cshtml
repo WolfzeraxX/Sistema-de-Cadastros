@@ -1,0 +1,56 @@
+﻿@model UsuarioModel
+@{
+    ViewData["Title"] = "Criar Contato";
+}
+<script>
+    function validarFormulario(event) {
+      // Impede o envio do formulário
+      event.preventDefault();
+
+      // Obtém os valores dos inputs
+        var input1 = document.getElementById("Senha").value;
+        var input2 = document.getElementById("CSenha").value;
+
+      // Realiza a validação
+      if (input1 === input2) {
+        // Se os inputs são iguais, envia o formulário
+          document.getElementById("my_form").submit();
+      } else {
+        // Se os inputs são diferentes, exibe uma mensagem de erro
+        alert("Os inputs estão diferentes. Corrija antes de enviar o formulário.");
+      }
+    }
+</script>
+
+
+<div class="text-center">
+
+    <h1 class="display-4">Cadastrar Contato</h1>
+
+</div>
+<form asp-controller="Usuario" asp-action="Criar" method="post" id="my_form">
+    <div class="mb-3">
+        <label for="Nome" class="form-label">Nome</label>
+        <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o Nome do Contato">
+        @Html.ValidationMessageFor(x => x.Nome)
+    </div>
+    <div class="mb-3">
+        <label for="Email" class="form-label">Email</label>
+        <input type="email" asp-for="Email" class="form-control" placeholder="Digite o Email do Contato">
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+    <div class="mb-3">
+        <label for="Senha" class="form-label">Senha</label>
+        <input type="password" asp-for="Senha" class="form-control" id="Senha" placeholder="Digite uma Senha segura">
+        @Html.ValidationMessageFor(x => x.Senha)
+    </div>
+    <div class="mb-3">
+        <label for="Senha" class="form-label" >Senha</label>
+        <input type="password"  class="form-control" id="CSenha" placeholder="Confirme a Senha">
+       
+    </div>
+    
+
+    <button type="submit" class="btn btn-primary " onsubmit="validar()">Adicionar</button>
+    <a class="btn btn-secondary " asp-controller="Usuario" asp-action="Index" role="button">Voltar</a>
+</form>

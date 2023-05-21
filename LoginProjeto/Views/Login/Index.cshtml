@@ -1,0 +1,43 @@
+﻿@model LoginModel
+@{
+    Layout = "_Deslogado";
+    ViewData["Title"] = "Login";
+}
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["MensagemSucesso"]
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+
+    </div>
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+
+    <div class="alert alert-danger" role="alert">
+        @TempData["MensagemErro"]
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+
+    </div>
+}
+
+<p>Tela de Login</p>
+<form asp-controller="Login" asp-action="Entrar" method="post">
+    <div class="mb-3">
+        <label for="email" class="form-label">Email </label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" asp-for="Email">
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+    <div class="mb-3">
+        <label for="senha" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="senha" asp-for="Senha">
+        @Html.ValidationMessageFor(x => x.Senha)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Entrar</button>
+
+    <a class="mb-4 text-sm-center mx-auto text-primary" asp-action="RedefinirSenha" asp-controller="Login">Esqueceu a senha?</a>
+
+    
+</form>
