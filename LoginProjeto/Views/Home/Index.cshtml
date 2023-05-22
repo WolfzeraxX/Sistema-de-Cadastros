@@ -1,8 +1,12 @@
-﻿@{
+﻿@model UsuarioModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Bem vindo</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <input type="hidden" asp-for="Id" />
+    <h1 class="display-4">Bem vindo(a) </h1>
+
+    <h2> Sistema de Cadastro de Contatos e Usuarios</h2>
+
 </div>

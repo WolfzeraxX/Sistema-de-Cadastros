@@ -14,7 +14,7 @@ namespace LoginProjeto.Repositorio
         UsuarioModel Adicionar(UsuarioModel usuario);
 
         UsuarioModel Editar(UsuarioModel usuario);
-
+        UsuarioModel AlterarSenha(AlterarSenhaModel alterarSenhaModel);
         bool Deletar(int id);
     }
 }

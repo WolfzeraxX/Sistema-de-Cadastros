@@ -35,6 +35,11 @@ namespace LoginProjeto.Models
             return novaSenha;
         }
 
+        public void SetNovaSenha(string novaSenha)
+        {
+            Senha = novaSenha.GerarHash();
+        }
+
         
 
     }

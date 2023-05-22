@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace LoginProjeto.Helper
 {
     public static class Criptografia
-    {
+    { // Metodo de criptografica SHa1
         public static string GerarHash(this string valor)
         {
             var hash = SHA1.Create();

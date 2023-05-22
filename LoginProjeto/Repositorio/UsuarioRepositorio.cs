@@ -23,6 +23,20 @@ namespace LoginProjeto.Repositorio
             _bancoContext.SaveChanges();
             return usuario;
         }
+        // metodo de validação da alteração de senha !
+        public UsuarioModel AlterarSenha(AlterarSenhaModel alterarSenhaModel)
+        {
+            UsuarioModel usuarioDB = ListarPorId(alterarSenhaModel.id);
+            if (usuarioDB == null) throw new Exception("houve um erro na atualização da senha , Usuario não encontrado");
+            if (!usuarioDB.SenhaValida(alterarSenhaModel.SenhaAtual)) throw new Exception("Senha atual não confere");
+            if (usuarioDB.SenhaValida(alterarSenhaModel.NovaSenha)) throw new Exception("Nova senha deve ser diferente da atual");
+            usuarioDB.SetNovaSenha(alterarSenhaModel.NovaSenha);
+
+            _bancoContext.Usuarios.Update(usuarioDB);
+            _bancoContext.SaveChanges();
+
+            return usuarioDB;
+        }
 
         public UsuarioModel BuscarPorLogin(string Email)
         {
