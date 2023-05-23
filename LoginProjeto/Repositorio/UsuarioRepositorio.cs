@@ -69,7 +69,7 @@ namespace LoginProjeto.Repositorio
 
             usuarioDB.Nome = usuario.Nome;
             usuarioDB.Email = usuario.Email;
-            usuarioDB.Senha = usuario.Senha;
+           // usuarioDB.Senha = usuario.Senha;
 
             _bancoContext.Usuarios.Update(usuarioDB);
             _bancoContext.SaveChanges();
